@@ -16,12 +16,13 @@ public class StoryEntryScreen extends JFrame {
     private JList<String> storyListDisplay;
     private Map<String, String> participantNames;
     private List<String> storyList;
+    private String currentUserName;
+
 
     public StoryEntryScreen(String sessionId, String currentUserName) {
         super("Story Entry - PlanItPoker");
         Repository repo = Repository.getInstance();
-
-        // ✅ Get the already-fetched stories
+        this.currentUserName = currentUserName;
         JSONArray storiesArray = repo.getFetchedStories();
         storyList = new ArrayList<>();
 
@@ -39,11 +40,8 @@ public class StoryEntryScreen extends JFrame {
             return;
         }
 
-        // Set up dummy participant map for now
-        participantNames = new HashMap<>();
-        participantNames.put("user1", "Alice");
-        participantNames.put("user2", "Bob");
-        participantNames.put("user3", "Charlie");
+        participantNames = repo.getInstance().getParticipants();
+
 
         // GUI setup
         setLayout(new BorderLayout());
@@ -71,21 +69,32 @@ public class StoryEntryScreen extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-
     private void startVoting() {
         if (storyList == null || storyList.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please add at least one story.", "No Stories", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        Voting voting = new Voting((ArrayList<String>) storyList);
+        Repository repo = Repository.getInstance();
+        String sessionId = repo.getSessionID();
+        repo.addParticipant(currentUserName, currentUserName); // id = name for creator
+
+        Map<String, String> allParticipants = repo.getAllParticipants();
+        if (allParticipants.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No participants joined yet.", "Waiting for Participants", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Voting voting = new Voting(new ArrayList<>(storyList));
         voting.setStories(storyList);
 
-        for (String participantId : participantNames.keySet()) {
-            voting.registerParticipant(participantId, participantNames.get(participantId));
+        for (String participantId : allParticipants.keySet()) {
+            voting.registerParticipant(participantId, allParticipants.get(participantId));
             voting.showVotingPopup(participantId);
         }
 
         dispose();
     }
+
+
 }

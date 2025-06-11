@@ -1,6 +1,7 @@
 package publisher;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +36,7 @@ public class PlanItPoker {
         repo.setName(userName);
 
         if (publisher == null) {
-            publisher = new Publisher();
+            publisher = Publisher.getInstance();
             new Thread(publisher).start();
         }
         if (subscriber == null) {
@@ -178,6 +179,16 @@ class ModifiedJoinSession extends JFrame {
                 participants.add(userName);
                 sessions.put(sessionId, participants);
 
+                // Publish MQTT "join" event
+                JSONObject joinMsg = new JSONObject();
+                joinMsg.put("type", "join");
+                joinMsg.put("sessionId", sessionId);
+                joinMsg.put("participantId", userName);
+                joinMsg.put("displayName", userName);
+
+                Publisher pub = Publisher.getInstance();
+                pub.publish("software/360", joinMsg.toString());
+
                 JOptionPane.showMessageDialog(ModifiedJoinSession.this,
                         "Successfully joined session: " + sessionId + " as " + userName,
                         "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -185,6 +196,7 @@ class ModifiedJoinSession extends JFrame {
                 PlanItPoker.onSessionJoined(sessionId, userName, ModifiedJoinSession.this);
             }
         });
+
 
         createButton.addActionListener(e -> {
             String userName = nameField.getText().trim();

@@ -2,7 +2,6 @@ package publisher;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
@@ -125,9 +124,13 @@ public class Voting {
     }
 
     private void displayFinalResults() {
+        JTabbedPane finalTabs = new JTabbedPane();
+
+
         JFrame resultsFrame = new JFrame("Final Voting Results");
         resultsFrame.setSize(400, 500);
         resultsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resultsFrame.setLayout(new BorderLayout());
 
         JTextArea resultsArea = new JTextArea();
         resultsArea.setEditable(false);
@@ -142,8 +145,26 @@ public class Voting {
             Float avg = storyAverages.get(story);
             resultsArea.append("  → Average: " + (avg != null ? String.format("%.2f", avg) : "N/A") + "\n\n");
         }
+        JScrollPane scrollPane = new JScrollPane(resultsArea);
 
-        resultsFrame.add(new JScrollPane(resultsArea));
+
+        ChartPanel chartPane = new ChartPanel(stories,allVotingResults);
+        JScrollPane scrollPane1 = new JScrollPane(chartPane);
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton exportButton = new JButton("Export Results");
+        ExportVotingResultsNanny buttonListener = new ExportVotingResultsNanny();
+        exportButton.addActionListener(e-> {
+            buttonListener.export(stories,allVotingResults,participantNames,storyAverages);
+        });
+        buttonPanel.add(exportButton);
+
+
+        finalTabs.addTab("Results",scrollPane);
+        finalTabs.addTab("Plots",scrollPane1);
+
+        resultsFrame.add(finalTabs,BorderLayout.CENTER);
+        resultsFrame.add(buttonPanel,BorderLayout.SOUTH);
         resultsFrame.setLocationRelativeTo(null);
         resultsFrame.setVisible(true);
     }
@@ -155,6 +176,8 @@ public class Voting {
     public Map<String, Float> getStoryAverages() {
         return storyAverages;
     }
+
+
     public void setStories(List<String> stories) {
         this.stories = (ArrayList<String>) stories;
     }

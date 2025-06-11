@@ -1,70 +1,52 @@
-/**
- * Logan Lumetta 5/28
- * Subsciber class for MQTT
- */
-
 package publisher;
 
 import org.eclipse.paho.client.mqttv3.*;
+import org.json.JSONObject;
 
-public class Subscriber implements Runnable, MqttCallback {
+import javax.swing.*;
+import java.util.ArrayList;
 
-    private MqttClient client;
+public class Subscriber implements Runnable {
     private final String broker = "tcp://broker.hivemq.com:1883";
     private final String topic = "software/360";
     private final String clientId = "ASU-subscriber-" + System.currentTimeMillis();
+
+    private MqttClient client;
 
     @Override
     public void run() {
         try {
             client = new MqttClient(broker, clientId);
-            client.setCallback(this);
-            client.connect();
-            client.subscribe(topic);
+            MqttConnectOptions options = new MqttConnectOptions();
+            options.setAutomaticReconnect(true);
+            options.setCleanSession(true);
+            client.connect(options);
+
+            client.subscribe(topic, (receivedTopic, message) -> {
+                String payload = new String(message.getPayload());
+                System.out.println("Received message: " + payload);
+
+                JSONObject json = new JSONObject(payload);
+                if (json.getString("type").equals("start_voting")) {
+                    String sessionId = json.getString("sessionId");
+                    int index = json.getInt("storyIndex");
+                    String story = json.getString("story");
+
+                    Repository repo = Repository.getInstance();
+                    if (repo.getSessionID().equals(sessionId)) {
+                        repo.setCurrentStoryIndex(index);
+                        SwingUtilities.invokeLater(() -> {
+                            Voting voting = new Voting((ArrayList<String>) repo.getStories());
+                            voting.showVotingPopup(repo.getName());
+                        });
+                    }
+                }
+            });
+
             System.out.println("Subscribed to topic: " + topic);
+
         } catch (MqttException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void connectionLost(Throwable throwable) {
-        System.out.println("Connection lost! " + throwable.getMessage());
-    }
-
-    @Override
-    public void messageArrived(String topic, MqttMessage message) {
-        String payload = new String(message.getPayload());
-        System.out.println("Received message: " + payload);
-
-        try {
-            if (payload.contains("Session:")) {
-                String[] parts = payload.split(",");
-                String sessionId = parts[0].split(":")[1].trim();
-                int storyIndex = Integer.parseInt(parts[1].split("#")[1].trim()) - 1;
-
-                String votePart = parts[2].split(":")[1].trim();
-                votePart = votePart.substring(1, votePart.length() - 1);
-
-                String[] voteStrings = votePart.split(",");
-
-                int[] votes = new int[voteStrings.length];
-                for (int i = 0; i < voteStrings.length; i++) {
-                    votes[i] = Integer.parseInt(voteStrings[i].trim());
-                }
-
-                Repository repo = Repository.getInstance();
-                repo.setSessionID(sessionId);
-                repo.setCurrentStoryIndex(storyIndex);
-                repo.setVotes(votes);
-            }
-        } catch (Exception e) {
-            System.out.println("Failed to parse message: " + e.getMessage());
-        }
-    }
-
-    @Override
-    public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
-
     }
 }

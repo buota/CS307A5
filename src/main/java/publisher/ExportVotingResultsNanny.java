@@ -1,29 +1,32 @@
-package publisher; /**
+/**
  * @author: Vardaan-K
  */
-
+package publisher;
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
 
 public class ExportVotingResultsNanny {
 
-    public void export(Blackboard blackboard){
+    public void export(ArrayList<String> stories,  Map<String, Map<String, Integer>> allVotingResults,Map<String, String> participantNames, Map<String, Float> storyAverages){
         JFileChooser fileChooser = new JFileChooser();
         int option = fileChooser.showSaveDialog(null);
 
         if (option == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             try (PrintWriter writer = new PrintWriter(file)) {
-                writer.println("Room Name: " + blackboard.getCurrentRoom());
-                writer.println("Participants: " + blackboard.getNames());
-                writer.println("Room Mode: " + blackboard.getMode());
-
-                LinkedList<Blackboard.Story> stories = blackboard.getStories();
-
-                for (Blackboard.Story story  : stories) {
-                    writer.printf("%s,%f,%d,%s\n",story.getTitle(),story.getAverage(),story.getNumberOfVotes(),story.getVotes());
+                writer.println("VOTING RESULTS");
+                for (String story : stories){
+                    writer.println("Story Name:" + story);
+                    Map<String, Integer> votes = allVotingResults.get(story);
+                    for (String pId : votes.keySet()){
+                        int vote = votes.get(pId);
+                        writer.println(participantNames.get(pId) + ":" +(vote == -1 ? "?" : vote) + "\n" );
+                    }
+                    Float avg = storyAverages.get(story);
+                    writer.println("Average:" +  (avg != null ? String.format("%.2f", avg) : "N/A"));
                 }
 
                 JOptionPane.showMessageDialog(null, "Export successful!");
