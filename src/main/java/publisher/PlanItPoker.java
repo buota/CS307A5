@@ -27,6 +27,7 @@ public class PlanItPoker {
     private static Map<String, ArrayList<String>> activeSessions = new HashMap<>();
 
     public static void main(String[] args) {
+        initializeMQTT();
         logger = Logger.getLogger("planitpoker.log");
         logger.info("Starting PlanIt Poker application");
         
@@ -62,7 +63,6 @@ public class PlanItPoker {
         blackboard.addName(userName);
         blackboard.addCurrentRoom(sessionId);
 
-        initializeMQTT();
         publishJoinEvent(sessionId, userName);
 
         SwingUtilities.invokeLater(() -> {
