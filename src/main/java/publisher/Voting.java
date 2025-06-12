@@ -1,3 +1,7 @@
+/**
+ * @author: Bryce Uota
+ */
+
 package publisher;
 
 import javax.swing.*;
