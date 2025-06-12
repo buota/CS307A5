@@ -1,4 +1,6 @@
-
+/**
+ * @author: Bryce Uota
+ */
 
 package publisher;
 
