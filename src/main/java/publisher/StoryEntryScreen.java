@@ -3,7 +3,6 @@
  * Screen to enter stories
  */
 package publisher
-    
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,7 +20,7 @@ public class StoryEntryScreen extends JFrame {
     private Map<String, String> participantNames; // Replace with actual participant map
 
     public StoryEntryScreen(String sessionId, String currentUserName) {
-        super("Enter Stories - PlanItPoker");
+        super("Review Stories - PlanItPoker");
 
         storyList = new ArrayList<>();
         participantNames = new HashMap<>();
@@ -30,7 +29,7 @@ public class StoryEntryScreen extends JFrame {
         setLayout(new BorderLayout());
 
         // Title
-        JLabel titleLabel = new JLabel("Enter Story Titles for Voting");
+        JLabel titleLabel = new JLabel("Review Story Titles for Voting");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(titleLabel, BorderLayout.NORTH);
@@ -39,37 +38,24 @@ public class StoryEntryScreen extends JFrame {
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
 
-        // Input field + Add button
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new FlowLayout());
+
 
         storyInputField = new JTextField(20);
-        JButton addButton = new JButton("Add Story");
 
-        addButton.addActionListener(e -> {
-            String story = storyInputField.getText().trim();
-            if (!story.isEmpty()) {
-                storyListModel.addElement(story);
-                storyList.add(story);
-                storyInputField.setText("");
-            }
-        });
         JSONArray fetchedStories = Repository.getInstance().getFetchedStories();
 
-        inputPanel.add(new JLabel("Story Title:"));
-        inputPanel.add(storyInputField);
-        inputPanel.add(addButton);
+
 
         // Story list display
         storyListModel = new DefaultListModel<>();
         for (int i = 0; i < fetchedStories.length(); i++) {
             JSONObject obj = fetchedStories.getJSONObject(i);
             storyListModel.addElement(obj.getString("subject"));
+            storyList.add(obj.getString("subject"));
         }
         storyListDisplay = new JList<>(storyListModel);
         JScrollPane listScrollPane = new JScrollPane(storyListDisplay);
 
-        centerPanel.add(inputPanel, BorderLayout.NORTH);
         centerPanel.add(listScrollPane, BorderLayout.CENTER);
         add(centerPanel, BorderLayout.CENTER);
 
