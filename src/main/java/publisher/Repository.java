@@ -55,7 +55,6 @@ public class Repository {
 
     public synchronized void setStories(List<String> stories) {
         this.stories = stories;
-        notifyObservers();
     }
 
     public synchronized List<String> getStories() {
@@ -64,7 +63,6 @@ public class Repository {
 
     public synchronized void addParticipant(String participantId, String name) {
         participants.put(participantId, name);
-        notifyObservers();
     }
 
     public synchronized String getParticipantName(String participantId) {
@@ -77,6 +75,7 @@ public class Repository {
 
     public synchronized void setVotes(int[] votes) {
         this.votes = votes;
+        notifyObservers();
     }
 
     public synchronized int getCurrentStoryIndex() {
@@ -85,6 +84,7 @@ public class Repository {
 
     public synchronized void setCurrentStoryIndex(int index) {
         this.currentStoryIndex = index;
+        notifyObservers();
     }
 
 
@@ -119,7 +119,6 @@ public class Repository {
 
     public synchronized void setName(String name) {
         this.name = name;
-        notifyObservers();
     }
 
     public synchronized String getName() {
@@ -149,7 +148,6 @@ public class Repository {
     private JSONArray fetchedStories;
     public synchronized void setFetchedStories(JSONArray stories) {
         this.fetchedStories = stories;
-        notifyObservers();
     }
 
     public synchronized JSONArray getFetchedStories() {
