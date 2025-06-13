@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Subscriber implements Runnable {
     private final String broker = "tcp://broker.hivemq.com:1883";
@@ -31,10 +32,12 @@ public class Subscriber implements Runnable {
                     String sessionId = json.getString("sessionId");
                     int index = json.getInt("storyIndex");
                     String story = json.getString("story");
+                    String stories = json.getString("stories");
 
                     Repository repo = Repository.getInstance();
                     if (repo.getSessionID().equals(sessionId)) {
                         repo.setCurrentStoryIndex(index);
+                        repo.setStories(List.of(stories.split(",")));
                         SwingUtilities.invokeLater(() -> {
                             Voting voting = new Voting((ArrayList<String>) repo.getStories());
                             voting.showVotingPopup(repo.getName());
