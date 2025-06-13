@@ -1,0 +1,296 @@
+[2025-06-12 16:25:16.154] INFO - Starting PlanIt Poker application
+[2025-06-12 16:25:16.330] INFO - Look and feel set successfully
+[2025-06-12 16:25:16.553] INFO - Main menu launched
+[2025-06-12 16:25:38.076] INFO - Starting PlanIt Poker application
+[2025-06-12 16:25:38.223] INFO - Publisher initialized and started
+[2025-06-12 16:25:38.225] INFO - Subscriber initialized and started
+[2025-06-12 16:25:38.446] INFO - Look and feel set successfully
+[2025-06-12 16:25:38.693] INFO - Main menu launched
+[2025-06-12 16:27:32.308] INFO - Starting PlanIt Poker application
+[2025-06-12 16:27:32.443] INFO - Publisher initialized and started
+[2025-06-12 16:27:32.446] INFO - Subscriber initialized and started
+[2025-06-12 16:27:32.638] INFO - Look and feel set successfully
+[2025-06-12 16:27:32.852] INFO - Main menu launched
+[2025-06-12 16:28:23.289] INFO - User logan joining session 763987
+[2025-06-12 16:28:24.242] INFO - Published join event for logan
+[2025-06-12 16:28:24.368] INFO - Story entry screen launched for user logan
+[2025-06-12 16:28:51.751] INFO - Starting PlanIt Poker application
+[2025-06-12 16:28:51.874] INFO - Publisher initialized and started
+[2025-06-12 16:28:51.877] INFO - Subscriber initialized and started
+[2025-06-12 16:28:52.096] INFO - Look and feel set successfully
+[2025-06-12 16:28:52.271] INFO - Main menu launched
+[2025-06-12 16:30:52.555] INFO - Starting PlanIt Poker application
+[2025-06-12 16:30:52.693] INFO - Publisher initialized and started
+[2025-06-12 16:30:52.695] INFO - Subscriber initialized and started
+[2025-06-12 16:30:52.956] INFO - Look and feel set successfully
+[2025-06-12 16:30:53.215] INFO - Main menu launched
+[2025-06-12 16:32:31.329] INFO - Starting PlanIt Poker application
+[2025-06-12 16:32:31.459] INFO - Publisher initialized and started
+[2025-06-12 16:32:31.461] INFO - Subscriber initialized and started
+[2025-06-12 16:32:31.688] INFO - Look and feel set successfully
+[2025-06-12 16:32:31.886] INFO - Main menu launched
+[2025-06-12 16:32:41.679] INFO - User ge joining session 123456
+[2025-06-12 16:32:42.712] INFO - Published join event for ge
+[2025-06-12 16:32:44.659] INFO - Story entry screen launched for user ge
+[2025-06-12 16:36:48.181] INFO - Starting PlanIt Poker application
+[2025-06-12 16:36:48.301] INFO - Publisher initialized and started
+[2025-06-12 16:36:48.304] INFO - Subscriber initialized and started
+[2025-06-12 16:36:48.492] INFO - Look and feel set successfully
+[2025-06-12 16:36:48.693] INFO - Main menu launched
+[2025-06-12 16:37:00.839] INFO - User g joining session 95173
+[2025-06-12 16:37:01.894] INFO - Published join event for g
+[2025-06-12 16:40:27.435] INFO - Starting PlanIt Poker application
+[2025-06-12 16:40:27.573] INFO - Publisher initialized and started
+[2025-06-12 16:40:27.575] INFO - Subscriber initialized and started
+[2025-06-12 16:40:27.804] INFO - Look and feel set successfully
+[2025-06-12 16:40:28.033] INFO - Main menu launched
+[2025-06-12 16:40:33.923] INFO - User d joining session 1
+[2025-06-12 16:40:35.393] INFO - Published join event for d
+[2025-06-12 16:40:36.890] INFO - Story entry screen launched for user d
+[2025-06-12 16:41:03.571] INFO - Starting PlanIt Poker application
+[2025-06-12 16:41:03.699] INFO - Publisher initialized and started
+[2025-06-12 16:41:03.702] INFO - Subscriber initialized and started
+[2025-06-12 16:41:03.895] INFO - Look and feel set successfully
+[2025-06-12 16:41:04.065] INFO - Main menu launched
+[2025-06-12 16:41:11.120] INFO - Starting PlanIt Poker application
+[2025-06-12 16:41:11.254] INFO - Publisher initialized and started
+[2025-06-12 16:41:11.257] INFO - Subscriber initialized and started
+[2025-06-12 16:41:11.479] INFO - Look and feel set successfully
+[2025-06-12 16:41:11.652] INFO - Main menu launched
+[2025-06-12 16:44:48.707] INFO - User logan joining session 218582
+[2025-06-12 16:44:49.828] INFO - Published join event for logan
+[2025-06-12 16:44:55.364] INFO - Story entry screen launched for user logan
+[2025-06-12 16:52:22.358] INFO - Starting PlanIt Poker application
+[2025-06-12 16:52:22.566] INFO - Publisher initialized and started
+[2025-06-12 16:52:22.610] INFO - Subscriber initialized and started
+[2025-06-12 16:52:22.921] INFO - Look and feel set successfully
+[2025-06-12 16:52:23.182] INFO - Main menu launched
+[2025-06-12 16:55:59.707] INFO - Starting PlanIt Poker application
+[2025-06-12 16:55:59.841] INFO - Publisher initialized and started
+[2025-06-12 16:55:59.845] INFO - Subscriber initialized and started
+[2025-06-12 16:56:00.134] INFO - Look and feel set successfully
+[2025-06-12 16:56:00.339] INFO - Main menu launched
+[2025-06-12 16:56:55.313] INFO - User logan joining session 767891
+[2025-06-12 16:56:56.254] INFO - Published join event for logan
+[2025-06-12 16:56:56.433] INFO - Story entry screen launched for user logan
+[2025-06-12 16:57:47.087] INFO - Starting PlanIt Poker application
+[2025-06-12 16:57:47.235] INFO - Publisher initialized and started
+[2025-06-12 16:57:47.238] INFO - Subscriber initialized and started
+[2025-06-12 16:57:47.916] INFO - Look and feel set successfully
+[2025-06-12 16:57:48.179] INFO - Main menu launched
+[2025-06-12 16:58:13.012] INFO - User logan joining session 237831
+[2025-06-12 16:58:14.019] INFO - Published join event for logan
+[2025-06-12 16:58:14.189] INFO - Story entry screen launched for user logan
+[2025-06-12 17:03:54.504] INFO - Starting PlanIt Poker application
+[2025-06-12 17:03:54.628] INFO - Publisher initialized and started
+[2025-06-12 17:03:54.633] INFO - Subscriber initialized and started
+[2025-06-12 17:03:54.832] INFO - Look and feel set successfully
+[2025-06-12 17:03:55.046] INFO - Main menu launched
+[2025-06-12 17:04:47.263] INFO - User logan joining session 594404
+[2025-06-12 17:04:48.159] INFO - Published join event for logan
+[2025-06-12 17:25:11.505] INFO - Starting PlanIt Poker application
+[2025-06-12 17:25:11.649] INFO - Publisher initialized and started
+[2025-06-12 17:25:11.652] INFO - Subscriber initialized and started
+[2025-06-12 17:25:11.872] INFO - Look and feel set successfully
+[2025-06-12 17:25:12.112] INFO - Main menu launched
+[2025-06-12 17:27:17.096] INFO - User Logan joining session 784716
+[2025-06-12 17:27:18.127] INFO - Published join event for Logan
+[2025-06-12 18:00:21.563] INFO - Starting PlanIt Poker application
+[2025-06-12 18:00:21.688] INFO - Publisher initialized and started
+[2025-06-12 18:00:21.691] INFO - Subscriber initialized and started
+[2025-06-12 18:00:22.040] INFO - Look and feel set successfully
+[2025-06-12 18:00:22.274] INFO - Main menu launched
+[2025-06-12 18:00:52.004] INFO - User L joining session 687259
+[2025-06-12 18:00:52.795] INFO - Published join event for L
+[2025-06-12 18:00:52.994] INFO - Story entry screen launched for user L
+[2025-06-12 18:01:02.203] INFO - Starting PlanIt Poker application
+[2025-06-12 18:01:02.329] INFO - Publisher initialized and started
+[2025-06-12 18:01:02.332] INFO - Subscriber initialized and started
+[2025-06-12 18:01:02.558] INFO - Look and feel set successfully
+[2025-06-12 18:01:02.768] INFO - Main menu launched
+[2025-06-12 18:01:21.383] INFO - User f joining session 687259
+[2025-06-12 18:01:22.262] INFO - Published join event for f
+[2025-06-12 18:13:25.453] INFO - Starting PlanIt Poker application
+[2025-06-12 18:13:25.633] INFO - Publisher initialized and started
+[2025-06-12 18:13:25.665] INFO - Subscriber initialized and started
+[2025-06-12 18:13:25.933] INFO - Look and feel set successfully
+[2025-06-12 18:13:26.171] INFO - Main menu launched
+[2025-06-12 18:18:35.779] INFO - Starting PlanIt Poker application
+[2025-06-12 18:18:35.942] INFO - Publisher initialized and started
+[2025-06-12 18:18:35.944] INFO - Subscriber initialized and started
+[2025-06-12 18:18:36.888] INFO - Look and feel set successfully
+[2025-06-12 18:18:37.273] INFO - Main menu launched
+[2025-06-12 18:18:41.806] INFO - Starting PlanIt Poker application
+[2025-06-12 18:18:41.934] INFO - Publisher initialized and started
+[2025-06-12 18:18:41.937] INFO - Subscriber initialized and started
+[2025-06-12 18:18:42.252] INFO - Look and feel set successfully
+[2025-06-12 18:18:42.478] INFO - Main menu launched
+[2025-06-12 18:19:11.489] INFO - User f joining session 224860
+[2025-06-12 18:19:12.257] INFO - Published join event for f
+[2025-06-12 18:19:12.420] INFO - Story entry screen launched for user f
+[2025-06-12 18:19:48.872] INFO - User f joining session 224860
+[2025-06-12 18:20:25.767] INFO - Starting PlanIt Poker application
+[2025-06-12 18:20:25.921] INFO - Publisher initialized and started
+[2025-06-12 18:20:25.925] INFO - Subscriber initialized and started
+[2025-06-12 18:20:26.249] INFO - Look and feel set successfully
+[2025-06-12 18:20:26.488] INFO - Main menu launched
+[2025-06-12 18:21:24.262] INFO - User f joining session 811377
+[2025-06-12 18:21:25.170] INFO - Published join event for f
+[2025-06-12 18:21:25.335] INFO - Story entry screen launched for user f
+[2025-06-12 18:26:52.555] INFO - Starting PlanIt Poker application
+[2025-06-12 18:26:52.697] INFO - Publisher initialized and started
+[2025-06-12 18:26:52.702] INFO - Subscriber initialized and started
+[2025-06-12 18:26:53.032] INFO - Look and feel set successfully
+[2025-06-12 18:26:53.295] INFO - Main menu launched
+[2025-06-12 18:27:25.159] INFO - User r joining session 948070
+[2025-06-12 18:27:26.037] INFO - Published join event for r
+[2025-06-12 18:27:26.221] INFO - Story entry screen launched for user r
+[2025-06-12 18:27:31.608] INFO - Starting PlanIt Poker application
+[2025-06-12 18:27:31.748] INFO - Publisher initialized and started
+[2025-06-12 18:27:31.751] INFO - Subscriber initialized and started
+[2025-06-12 18:27:32.083] INFO - Look and feel set successfully
+[2025-06-12 18:27:32.347] INFO - Main menu launched
+[2025-06-12 18:28:18.110] INFO - User f joining session 582126
+[2025-06-12 18:28:18.946] INFO - Published join event for f
+[2025-06-12 18:28:19.184] INFO - Story entry screen launched for user f
+[2025-06-12 18:28:25.811] INFO - Starting PlanIt Poker application
+[2025-06-12 18:28:25.948] INFO - Publisher initialized and started
+[2025-06-12 18:28:25.952] INFO - Subscriber initialized and started
+[2025-06-12 18:28:26.292] INFO - Look and feel set successfully
+[2025-06-12 18:28:26.506] INFO - Main menu launched
+[2025-06-12 18:28:50.508] INFO - User 3 joining session 582126
+[2025-06-12 18:32:59.485] INFO - Starting PlanIt Poker application
+[2025-06-12 18:32:59.597] INFO - Publisher initialized and started
+[2025-06-12 18:32:59.601] INFO - Subscriber initialized and started
+[2025-06-12 18:32:59.790] INFO - Look and feel set successfully
+[2025-06-12 18:32:59.946] INFO - Main menu launched
+[2025-06-12 18:48:56.330] INFO - Starting PlanIt Poker application
+[2025-06-12 18:48:56.457] INFO - Publisher initialized and started
+[2025-06-12 18:48:56.486] INFO - Subscriber initialized and started
+[2025-06-12 18:48:56.706] INFO - Look and feel set successfully
+[2025-06-12 18:48:56.911] INFO - Main menu launched
+[2025-06-12 18:49:31.632] INFO - User logan joining session 126237
+[2025-06-12 18:51:40.399] INFO - Starting PlanIt Poker application
+[2025-06-12 18:51:40.552] INFO - Publisher initialized and started
+[2025-06-12 18:51:40.555] INFO - Subscriber initialized and started
+[2025-06-12 18:51:40.774] INFO - Look and feel set successfully
+[2025-06-12 18:51:40.984] INFO - Main menu launched
+[2025-06-12 18:51:52.402] INFO - User lgoan joining session 114260
+[2025-06-12 18:51:53.252] INFO - Published join event for lgoan
+[2025-06-12 18:53:47.536] INFO - Starting PlanIt Poker application
+[2025-06-12 18:53:47.668] INFO - Publisher initialized and started
+[2025-06-12 18:53:47.671] INFO - Subscriber initialized and started
+[2025-06-12 18:53:47.925] INFO - Look and feel set successfully
+[2025-06-12 18:53:48.155] INFO - Main menu launched
+[2025-06-12 18:54:21.693] INFO - User logan joining session 599434
+[2025-06-12 18:54:22.615] INFO - Published join event for logan
+[2025-06-12 18:55:49.459] INFO - Starting PlanIt Poker application
+[2025-06-12 18:55:49.590] INFO - Publisher initialized and started
+[2025-06-12 18:55:49.618] INFO - Subscriber initialized and started
+[2025-06-12 18:55:49.834] INFO - Look and feel set successfully
+[2025-06-12 18:55:50.027] INFO - Main menu launched
+[2025-06-12 18:56:00.967] INFO - User logan joining session 479581
+[2025-06-12 18:56:01.863] INFO - Published join event for logan
+[2025-06-12 18:57:21.087] INFO - Starting PlanIt Poker application
+[2025-06-12 18:57:21.233] INFO - Publisher initialized and started
+[2025-06-12 18:57:21.259] INFO - Subscriber initialized and started
+[2025-06-12 18:57:21.461] INFO - Look and feel set successfully
+[2025-06-12 18:57:21.691] INFO - Main menu launched
+[2025-06-12 18:57:44.520] INFO - User logan joining session 573892
+[2025-06-12 18:57:45.283] INFO - Published join event for logan
+[2025-06-12 19:04:00.123] INFO - Starting PlanIt Poker application
+[2025-06-12 19:04:00.250] INFO - Publisher initialized and started
+[2025-06-12 19:04:00.253] INFO - Subscriber initialized and started
+[2025-06-12 19:04:00.463] INFO - Look and feel set successfully
+[2025-06-12 19:04:00.657] INFO - Main menu launched
+[2025-06-12 19:04:38.376] INFO - User logan joining session 578768
+[2025-06-12 19:04:39.125] INFO - Published join event for logan
+[2025-06-12 19:06:48.155] INFO - Starting PlanIt Poker application
+[2025-06-12 19:06:48.291] INFO - Publisher initialized and started
+[2025-06-12 19:06:48.325] INFO - Subscriber initialized and started
+[2025-06-12 19:06:48.532] INFO - Look and feel set successfully
+[2025-06-12 19:06:48.735] INFO - Main menu launched
+[2025-06-12 19:07:25.099] INFO - User Logan joining session 998939
+[2025-06-12 19:07:26.133] INFO - Published join event for Logan
+[2025-06-12 19:08:49.687] INFO - Starting PlanIt Poker application
+[2025-06-12 19:08:49.758] INFO - Publisher initialized and started
+[2025-06-12 19:08:49.774] INFO - Subscriber initialized and started
+[2025-06-12 19:08:49.903] INFO - Look and feel set successfully
+[2025-06-12 19:08:50.024] INFO - Main menu launched
+[2025-06-12 19:09:04.673] INFO - User v joining session 989359
+[2025-06-12 19:09:05.186] INFO - Published join event for v
+[2025-06-12 19:10:12.792] INFO - Starting PlanIt Poker application
+[2025-06-12 19:10:12.875] INFO - Publisher initialized and started
+[2025-06-12 19:10:12.891] INFO - Subscriber initialized and started
+[2025-06-12 19:10:13.030] INFO - Look and feel set successfully
+[2025-06-12 19:10:13.154] INFO - Main menu launched
+[2025-06-12 19:10:45.232] INFO - User v joining session 504638
+[2025-06-12 19:10:45.805] INFO - Published join event for v
+[2025-06-12 19:18:31.593] INFO - Starting PlanIt Poker application
+[2025-06-12 19:18:31.683] INFO - Publisher initialized and started
+[2025-06-12 19:18:31.697] INFO - Subscriber initialized and started
+[2025-06-12 19:18:31.849] INFO - Look and feel set successfully
+[2025-06-12 19:18:32.006] INFO - Main menu launched
+[2025-06-12 19:18:59.389] INFO - User a joining session 307293
+[2025-06-12 19:18:59.905] INFO - Published join event for a
+[2025-06-12 19:20:01.716] INFO - Starting PlanIt Poker application
+[2025-06-12 19:20:01.795] INFO - Publisher initialized and started
+[2025-06-12 19:20:01.813] INFO - Subscriber initialized and started
+[2025-06-12 19:20:01.941] INFO - Look and feel set successfully
+[2025-06-12 19:20:02.078] INFO - Main menu launched
+[2025-06-12 19:20:15.667] INFO - User a joining session 871804
+[2025-06-12 19:20:16.388] INFO - Published join event for a
+[2025-06-12 19:22:01.846] INFO - Starting PlanIt Poker application
+[2025-06-12 19:22:01.932] INFO - Publisher initialized and started
+[2025-06-12 19:22:01.950] INFO - Subscriber initialized and started
+[2025-06-12 19:22:02.077] INFO - Look and feel set successfully
+[2025-06-12 19:22:02.201] INFO - Main menu launched
+[2025-06-12 19:23:37.330] INFO - Starting PlanIt Poker application
+[2025-06-12 19:23:37.410] INFO - Publisher initialized and started
+[2025-06-12 19:23:37.428] INFO - Subscriber initialized and started
+[2025-06-12 19:23:37.562] INFO - Look and feel set successfully
+[2025-06-12 19:23:37.714] INFO - Main menu launched
+[2025-06-12 19:25:32.970] INFO - Starting PlanIt Poker application
+[2025-06-12 19:25:33.041] INFO - Publisher initialized and started
+[2025-06-12 19:25:33.043] INFO - Subscriber initialized and started
+[2025-06-12 19:25:33.181] INFO - Look and feel set successfully
+[2025-06-12 19:25:33.292] INFO - Main menu launched
+[2025-06-12 19:27:15.916] INFO - User a joining session 442130
+[2025-06-12 19:27:16.461] INFO - Published join event for a
+[2025-06-12 19:28:33.066] INFO - Starting PlanIt Poker application
+[2025-06-12 19:28:33.146] INFO - Publisher initialized and started
+[2025-06-12 19:28:33.164] INFO - Subscriber initialized and started
+[2025-06-12 19:28:33.285] INFO - Look and feel set successfully
+[2025-06-12 19:28:33.400] INFO - Main menu launched
+[2025-06-12 19:29:18.445] INFO - User a joining session 988647
+[2025-06-12 19:29:18.959] INFO - Published join event for a
+[2025-06-12 19:29:19.011] INFO - Story entry screen launched for user a
+[2025-06-12 19:30:09.008] INFO - Starting PlanIt Poker application
+[2025-06-12 19:30:09.077] INFO - Publisher initialized and started
+[2025-06-12 19:30:09.093] INFO - Subscriber initialized and started
+[2025-06-12 19:30:09.219] INFO - Look and feel set successfully
+[2025-06-12 19:30:09.333] INFO - Main menu launched
+[2025-06-12 19:30:38.069] INFO - User a joining session 555209
+[2025-06-12 19:30:38.789] INFO - Published join event for a
+[2025-06-12 19:30:38.865] INFO - Story entry screen launched for user a
+[2025-06-12 19:38:56.238] INFO - Starting PlanIt Poker application
+[2025-06-12 19:38:56.307] INFO - Publisher initialized and started
+[2025-06-12 19:38:56.309] INFO - Subscriber initialized and started
+[2025-06-12 19:38:56.441] INFO - Look and feel set successfully
+[2025-06-12 19:38:56.544] INFO - Main menu launched
+[2025-06-12 19:43:36.951] INFO - Starting PlanIt Poker application
+[2025-06-12 19:43:37.026] INFO - Publisher initialized and started
+[2025-06-12 19:43:37.028] INFO - Subscriber initialized and started
+[2025-06-12 19:43:37.153] INFO - Look and feel set successfully
+[2025-06-12 19:43:37.265] INFO - Main menu launched
+[2025-06-12 19:44:16.525] INFO - User v joining session 511546
+[2025-06-12 19:44:16.878] INFO - Published join event for v
+[2025-06-12 19:44:16.944] INFO - Story entry screen launched for user v
+[2025-06-12 19:55:06.489] INFO - Starting PlanIt Poker application
+[2025-06-12 19:55:06.594] INFO - Publisher initialized and started
+[2025-06-12 19:55:06.596] INFO - Subscriber initialized and started
+[2025-06-12 19:55:06.722] INFO - Look and feel set successfully
+[2025-06-12 19:55:06.844] INFO - Main menu launched
+[2025-06-12 19:55:54.993] INFO - User a joining session 705390
+[2025-06-12 19:55:55.362] INFO - Published join event for a
+[2025-06-12 19:55:55.417] INFO - Story entry screen launched for user a
