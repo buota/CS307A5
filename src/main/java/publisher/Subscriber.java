@@ -62,6 +62,7 @@ public class Subscriber implements Runnable {
                     Repository repo = Repository.getInstance();
                     //if (repo.getSessionID().equals(sessionId)) {
                         repo.setStories(stories);
+                        repo.setVotes((ArrayList<Integer>) votes);
                         SwingUtilities.invokeLater(() -> {
                             Voting voting = new Voting((ArrayList<String>) repo.getStories());
                             voting.showVotingPopup(repo.getName());

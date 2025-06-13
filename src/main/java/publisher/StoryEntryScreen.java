@@ -44,9 +44,6 @@ public class StoryEntryScreen extends JFrame {
         storyInputField = new JTextField(20);
 
 
-
-
-
         // Story list display
         storyListModel = new DefaultListModel<>();
 

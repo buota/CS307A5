@@ -46,7 +46,8 @@ public class Repository {
     // Getters and setters...
     public synchronized void setSessionID(String sessionID) {
         this.sessionID = sessionID;
-        notifyObservers();
+        System.out.println("ID TRIGGER");
+
     }
 
     public synchronized String getSessionID() {
@@ -74,9 +75,11 @@ public class Repository {
         return votes;
     }
 
-    public void addVote(int vote) {
-        votes.add(vote);
-        notifyObservers();
+
+    public void setVotes(ArrayList<Integer> votes) {
+        this.votes = votes;
+        System.out.println("VOTE TRIGGER");
+
     }
 
     public synchronized int getCurrentStoryIndex() {
@@ -85,7 +88,8 @@ public class Repository {
 
     public synchronized void setCurrentStoryIndex(int index) {
         this.currentStoryIndex = index;
-        notifyObservers();
+        System.out.println("INDEX TRIGGER");
+
     }
 
 
@@ -94,12 +98,6 @@ public class Repository {
     }
 
     // Submit a vote for a particular story (by index) from a participant.
-    public synchronized void submitVoteForParticipant(String participantId, int storyIndex, int vote) {
-        Map<String, Integer> votesForStory = voteMap.getOrDefault(storyIndex, new HashMap<>());
-        votesForStory.put(participantId, vote);
-        voteMap.put(storyIndex, votesForStory);
-        notifyObservers();
-    }
 
     public synchronized Map<Integer, Map<String, Integer>> getVoteMap() {
         return new HashMap<>(voteMap);
@@ -110,7 +108,7 @@ public class Repository {
         observers.add(observer);
     }
 
-    private synchronized void notifyObservers() {
+    public synchronized void notifyObservers() {
         for (RepositoryObserver obs : observers) {
             obs.update();
         }

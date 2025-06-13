@@ -64,7 +64,8 @@ public class PlanItPoker {
         blackboard.addName(userName);
         blackboard.addCurrentRoom(sessionId);
 
-        publishJoinEvent(sessionId, userName);
+        repository.notifyObservers();
+        //publishJoinEvent(sessionId, userName);
 
         SwingUtilities.invokeLater(() -> {
             new StoryEntryScreen(sessionId, userName);
@@ -301,6 +302,8 @@ class ModifiedJoinSession extends JFrame {
                     JSONObject obj = stories.getJSONObject(i);
                     s.add(obj.getString("subject"));
                 }
+
+
                 Repository.getInstance().setStories(s);
                 // Transition to story entry / voting
                 PlanItPoker.onSessionJoined(newSessionId, userName, this);
