@@ -54,12 +54,12 @@ public class Repository {
     }
 
     public synchronized void setStories(List<String> stories) {
-        this.stories = new ArrayList<>(stories);
+        this.stories = stories;
         notifyObservers();
     }
 
     public synchronized List<String> getStories() {
-        return new ArrayList<>(stories);
+        return stories;
     }
 
     public synchronized void addParticipant(String participantId, String name) {
