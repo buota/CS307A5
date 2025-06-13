@@ -2,7 +2,7 @@
  * Logan Lumetta 5/28
  * Screen to enter stories
  */
-package publisher
+package publisher;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StoryEntryScreen extends JFrame {
@@ -42,17 +43,19 @@ public class StoryEntryScreen extends JFrame {
 
         storyInputField = new JTextField(20);
 
-        JSONArray fetchedStories = Repository.getInstance().getFetchedStories();
+
 
 
 
         // Story list display
         storyListModel = new DefaultListModel<>();
-        for (int i = 0; i < fetchedStories.length(); i++) {
-            JSONObject obj = fetchedStories.getJSONObject(i);
-            storyListModel.addElement(obj.getString("subject"));
-            storyList.add(obj.getString("subject"));
+
+        List<String> stories = Repository.getInstance().getStories();
+        for(int i = 0; i < stories.size(); i++){
+            storyListModel.add(i,stories.get(i));
+            storyList.add(i,stories.get(i));
         }
+
         storyListDisplay = new JList<>(storyListModel);
         JScrollPane listScrollPane = new JScrollPane(storyListDisplay);
 
