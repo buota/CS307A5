@@ -296,6 +296,12 @@ class ModifiedJoinSession extends JFrame {
                         "Session created! Session ID: " + newSessionId,
                         "Session Created", JOptionPane.INFORMATION_MESSAGE);
 
+                List<String> s = new ArrayList<>();
+                for (int i = 0; i < stories.length(); i++) {
+                    JSONObject obj = stories.getJSONObject(i);
+                    s.add(obj.getString("subject"));
+                }
+                Repository.getInstance().setStories(s);
                 // Transition to story entry / voting
                 PlanItPoker.onSessionJoined(newSessionId, userName, this);
             }).setVisible(true);
