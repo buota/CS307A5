@@ -54,7 +54,7 @@ public class Publisher implements Runnable, RepositoryObserver {
             if (fetchedStories != null) {
                 for (int i = 0; i < fetchedStories.length(); i++) {
                     JSONObject obj = fetchedStories.getJSONObject(i);
-                    stories += obj.getString("subject") + ",";
+                    stories += obj.getString("subject") + ":";
                 }
             }
             StringBuilder voteString = new StringBuilder();

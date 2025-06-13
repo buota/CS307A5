@@ -7,37 +7,55 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class ChartPanel extends JPanel {
     private ArrayList<String> stories;
-    private Map<String, Map<String, Integer>> allVotingResults;
+    private List<List<Integer>> partitions;
 
 
-    public ChartPanel(ArrayList<String> stories, Map<String, Map<String, Integer>> allVotingResults){
-        this.allVotingResults = allVotingResults;
+    public ChartPanel(ArrayList<String> stories, List<List<Integer>> partitions){
+        this.partitions = partitions;
         this.stories = stories;
         JPanel charts = new JPanel();
         charts.setLayout(new BoxLayout(charts, BoxLayout.Y_AXIS));
         charts.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        for (String story: stories){
-            Collection<Integer> votes = allVotingResults.get(story).values();
+        for(int i = 0; i < stories.size();i++){
             Map<Integer, Integer> voteCounts = new HashMap<>();
-
-            for (int vote: votes){
+            for (int vote: partitions.get(i)){
                 voteCounts.put(vote,voteCounts.getOrDefault(vote,0)+1);
             }
-
             DefaultPieDataset dataset = createData(voteCounts);
-            JFreeChart chart =ChartFactory.createPieChart(story,dataset,true,false,false);
+            JFreeChart chart =ChartFactory.createPieChart(stories.get(i),dataset,true,false,false);
             charts.setSize(200,200);
             org.jfree.chart.ChartPanel chartPanel = new org.jfree.chart.ChartPanel(chart);
             chartPanel.setPreferredSize(new Dimension(300, 225));
 
             charts.add(Box.createVerticalStrut(10));
             charts.add(chartPanel);
+            JScrollPane scrollPane = new JScrollPane(charts);
+            add(scrollPane,BorderLayout.CENTER);
+
         }
-        JScrollPane scrollPane = new JScrollPane(charts);
-        add(scrollPane,BorderLayout.CENTER);
+//        for (String story: stories){
+//            Collection<Integer> votes = allVotingResults.get(story).values();
+//            Map<Integer, Integer> voteCounts = new HashMap<>();
+//
+//            for (int vote: votes){
+//                voteCounts.put(vote,voteCounts.getOrDefault(vote,0)+1);
+//            }
+//
+//            DefaultPieDataset dataset = createData(voteCounts);
+//            JFreeChart chart =ChartFactory.createPieChart(story,dataset,true,false,false);
+//            charts.setSize(200,200);
+//            org.jfree.chart.ChartPanel chartPanel = new org.jfree.chart.ChartPanel(chart);
+//            chartPanel.setPreferredSize(new Dimension(300, 225));
+//
+//            charts.add(Box.createVerticalStrut(10));
+//            charts.add(chartPanel);
+//        }
+//        JScrollPane scrollPane = new JScrollPane(charts);
+//        add(scrollPane,BorderLayout.CENTER);
 
     }
     public DefaultPieDataset createData(Map<Integer, Integer> voteCounts){

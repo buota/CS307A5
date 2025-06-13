@@ -71,12 +71,16 @@ public class Voting {
                 } catch (NumberFormatException ex) {
                     voteValue = -1;
                 }
-
-                currentStoryVotes.put(participantId, voteValue);
                 ArrayList<Integer> curVotes = Repository.getInstance().getVotes();
+                System.out.println("CURRENT VOTES:" + curVotes);
                 curVotes.add(voteValue);
+                System.out.println("UPDATED VOTES:");
+                System.out.println(curVotes);
                 Repository.getInstance().setVotes(curVotes);
                 Repository.getInstance().notifyObservers();
+
+                currentStoryVotes.put(participantId, voteValue);
+
                 allVotingResults.put(storyTitle, new HashMap<>(currentStoryVotes));
                 voteFrame.dispose();
 
@@ -89,6 +93,7 @@ public class Voting {
             });
             votingPanel.add(voteButton);
         }
+
 
         mainPanel.add(votingPanel, BorderLayout.CENTER);
         voteFrame.add(mainPanel);
@@ -103,6 +108,7 @@ public class Voting {
         for (int vote : votes.values()) {
             if (vote != -1) {
                 validVotes.add(vote);
+
             }
         }
 
@@ -128,6 +134,14 @@ public class Voting {
     }
 
     private void displayFinalResults() {
+        int offset = stories.size() * 2; //assume 2 people
+        ArrayList<Integer> results = Repository.getInstance().getVotes();
+        List<Integer> finalvotes = results.subList(results.size()-offset,results.size());
+        List<List<Integer>> partitions = new ArrayList<>();
+        for (int i = 0; i < finalvotes.size(); i += 2) {
+            partitions.add(finalvotes.subList(i, i + 2));
+        }
+        System.out.println("Parts" + partitions);
         JTabbedPane finalTabs = new JTabbedPane();
 
 
@@ -138,28 +152,30 @@ public class Voting {
 
         JTextArea resultsArea = new JTextArea();
         resultsArea.setEditable(false);
-
-        for (String story : stories) {
-            resultsArea.append("Story: " + story + "\n");
-            Map<String, Integer> votes = allVotingResults.get(story);
-            for (String participantId : votes.keySet()) {
-                int vote = votes.get(participantId);
-                resultsArea.append("  " + participantNames.get(participantId) + ": " + (vote == -1 ? "?" : vote) + "\n");
+        for(int i = 0; i < stories.size(); i++){
+            int sum = 0;
+            for(int n:partitions.get(i)){
+                sum += n;
             }
-            Float avg = storyAverages.get(story);
-            resultsArea.append("  → Average: " + (avg != null ? String.format("%.2f", avg) : "N/A") + "\n\n");
+
+            double avg = (double) sum/partitions.get(i).size();
+
+            resultsArea.append("Story: " + stories.get(i) + "\n");
+            resultsArea.append("Votes:" + partitions.get(i) + "\n");//assume 2 people
+            resultsArea.append("Average: "  + avg + "\n");
         }
+
         JScrollPane scrollPane = new JScrollPane(resultsArea);
 
 
-        ChartPanel chartPane = new ChartPanel(stories,allVotingResults);
+        ChartPanel chartPane = new ChartPanel(stories,partitions);
         JScrollPane scrollPane1 = new JScrollPane(chartPane);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton exportButton = new JButton("Export Results");
         ExportVotingResultsNanny buttonListener = new ExportVotingResultsNanny();
         exportButton.addActionListener(e-> {
-            buttonListener.export(stories,allVotingResults,participantNames,storyAverages);
+            buttonListener.export(stories,partitions);
         });
         buttonPanel.add(exportButton);
 
