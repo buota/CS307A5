@@ -252,13 +252,14 @@ class ModifiedJoinSession extends JFrame {
                 sessions.put(sessionId, participants);
 
                 // Publish MQTT "join" event
-                JSONObject requestStoriesMsg = new JSONObject();
-                requestStoriesMsg.put("type", "request_stories");
-                requestStoriesMsg.put("sessionId", sessionId);
-                requestStoriesMsg.put("participantId", userName);
+                JSONObject joinMsg = new JSONObject();
+                joinMsg.put("type", "join");
+                joinMsg.put("sessionId", sessionId);
+                joinMsg.put("participantId", userName);
+                joinMsg.put("displayName", userName);
 
                 Publisher pub = Publisher.getInstance();
-                pub.publish("software/360", requestStoriesMsg.toString());
+                pub.publish("software/360", joinMsg.toString());
 
                 JOptionPane.showMessageDialog(ModifiedJoinSession.this,
                         "Attempting to join session: " + sessionId + " as " + userName,
