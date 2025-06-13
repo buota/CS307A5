@@ -15,7 +15,7 @@ public class HomePageNanny {
         String sessionID = new CreateSessionID().createSessionID();
         repository.setSessionID(sessionID);
         repository.setCurrentStoryIndex(0);
-        repository.setVotes(new int[0]);
+        //repository.setVotes(new int[0]);
 
         System.out.println("Room created:");
         System.out.println("Name: " + name);

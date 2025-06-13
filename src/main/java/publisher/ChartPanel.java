@@ -41,12 +41,12 @@ public class ChartPanel extends JPanel {
 
     }
     public DefaultPieDataset createData(Map<Integer, Integer> voteCounts){
-            DefaultPieDataset dataset = new DefaultPieDataset();
-            for(Map.Entry<Integer,Integer> entry : voteCounts.entrySet()){
-                dataset.setValue(entry.getKey() + " Point(s)",entry.getValue());
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        for(Map.Entry<Integer,Integer> entry : voteCounts.entrySet()){
+            dataset.setValue(entry.getKey() + " Point(s)",entry.getValue());
 
-            }
-            return dataset;
+        }
+        return dataset;
 
     }
 

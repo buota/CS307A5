@@ -73,6 +73,7 @@ public class Voting {
                 }
 
                 currentStoryVotes.put(participantId, voteValue);
+                Repository.getInstance().addVote(voteValue);
                 allVotingResults.put(storyTitle, new HashMap<>(currentStoryVotes));
                 voteFrame.dispose();
 

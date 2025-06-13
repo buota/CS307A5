@@ -1,6 +1,10 @@
 package publisher;
 
 import org.eclipse.paho.client.mqttv3.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class Publisher implements Runnable, RepositoryObserver {
     private static Publisher instance;
@@ -43,9 +47,16 @@ public class Publisher implements Runnable, RepositoryObserver {
         if (client != null && client.isConnected()) {
             Repository repo = Repository.getInstance();
             String sessionId = repo.getSessionID();
-            int[] votes = repo.getVotes();
+            ArrayList<Integer> votes = repo.getVotes();
             int currentStory = repo.getCurrentStoryIndex();
-
+            JSONArray fetchedStories = Repository.getInstance().getFetchedStories();
+            String stories = "";
+            if (fetchedStories != null) {
+                for (int i = 0; i < fetchedStories.length(); i++) {
+                    JSONObject obj = fetchedStories.getJSONObject(i);
+                    stories += obj.getString("subject") + ",";
+                }
+            }
             StringBuilder voteString = new StringBuilder();
             for (int vote : votes) {
                 voteString.append(vote).append(",");
@@ -56,7 +67,8 @@ public class Publisher implements Runnable, RepositoryObserver {
 
             String message = "Session:" + sessionId +
                     ",Story#" + (currentStory + 1) +
-                    ",Votes:[" + voteString + "]";
+                    ",Votes:[" + voteString + "]" +
+                    ",Stories: " + stories;
 
             publish(topic, message);
         } else {

@@ -11,7 +11,7 @@ public class Repository {
     private static Repository instance;
 
     private String sessionID;
-    private int[] votes = new int[0];
+    private ArrayList<Integer> votes = new ArrayList<> ();
     private int currentStoryIndex = 0;
 
     // Store fetched stories (e.g., from Taiga)
@@ -54,29 +54,29 @@ public class Repository {
     }
 
     public synchronized void setStories(List<String> stories) {
-        this.stories = new ArrayList<>(stories);
-        notifyObservers();
+        this.stories = stories;
     }
 
     public synchronized List<String> getStories() {
-        return new ArrayList<>(stories);
+        return stories;
     }
 
     public synchronized void addParticipant(String participantId, String name) {
         participants.put(participantId, name);
-        notifyObservers();
+
     }
 
     public synchronized String getParticipantName(String participantId) {
         return participants.get(participantId);
     }
 
-    public synchronized int[] getVotes() {
-        return votes != null ? votes.clone() : new int[0];
+    public ArrayList<Integer> getVotes() {
+        return votes;
     }
 
-    public synchronized void setVotes(int[] votes) {
-        this.votes = votes;
+    public void addVote(int vote) {
+        votes.add(vote);
+        notifyObservers();
     }
 
     public synchronized int getCurrentStoryIndex() {
@@ -85,6 +85,7 @@ public class Repository {
 
     public synchronized void setCurrentStoryIndex(int index) {
         this.currentStoryIndex = index;
+        notifyObservers();
     }
 
 
@@ -119,7 +120,6 @@ public class Repository {
 
     public synchronized void setName(String name) {
         this.name = name;
-        notifyObservers();
     }
 
     public synchronized String getName() {
@@ -149,7 +149,6 @@ public class Repository {
     private JSONArray fetchedStories;
     public synchronized void setFetchedStories(JSONArray stories) {
         this.fetchedStories = stories;
-        notifyObservers();
     }
 
     public synchronized JSONArray getFetchedStories() {
