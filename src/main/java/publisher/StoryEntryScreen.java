@@ -1,100 +1,105 @@
-package publisher;
-
+/**
+ * Logan Lumetta 5/28
+ * Screen to enter stories
+ */
+package publisher
+    
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class StoryEntryScreen extends JFrame {
+    private JTextField storyInputField;
     private DefaultListModel<String> storyListModel;
     private JList<String> storyListDisplay;
-    private Map<String, String> participantNames;
-    private List<String> storyList;
-    private String currentUserName;
-
+    private ArrayList<String> storyList;
+    private Map<String, String> participantNames; // Replace with actual participant map
 
     public StoryEntryScreen(String sessionId, String currentUserName) {
-        super("Story Entry - PlanItPoker");
-        Repository repo = Repository.getInstance();
-        this.currentUserName = currentUserName;
-        JSONArray storiesArray = repo.getFetchedStories();
+        super("Enter Stories - PlanItPoker");
+
         storyList = new ArrayList<>();
+        participantNames = new HashMap<>();
+        participantNames.put("current_user", currentUserName); // Add more as needed
 
-        if (storiesArray != null) {
-            for (int i = 0; i < storiesArray.length(); i++) {
-                JSONObject story = storiesArray.getJSONObject(i);
-                String subject = story.optString("subject", "(no title)");
-                storyList.add(subject);
-            }
-        }
-
-        if (storyList.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No stories found. Please log in again.");
-            dispose();
-            return;
-        }
-
-        participantNames = repo.getInstance().getParticipants();
-
-
-        // GUI setup
         setLayout(new BorderLayout());
-        JLabel title = new JLabel("Fetched Stories from Taiga");
-        title.setFont(new Font("Arial", Font.BOLD, 20));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
 
+        // Title
+        JLabel titleLabel = new JLabel("Enter Story Titles for Voting");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(titleLabel, BorderLayout.NORTH);
+
+        // Center panel for input and story list
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BorderLayout());
+
+        // Input field + Add button
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new FlowLayout());
+
+        storyInputField = new JTextField(20);
+        JButton addButton = new JButton("Add Story");
+
+        addButton.addActionListener(e -> {
+            String story = storyInputField.getText().trim();
+            if (!story.isEmpty()) {
+                storyListModel.addElement(story);
+                storyList.add(story);
+                storyInputField.setText("");
+            }
+        });
+        JSONArray fetchedStories = Repository.getInstance().getFetchedStories();
+
+        inputPanel.add(new JLabel("Story Title:"));
+        inputPanel.add(storyInputField);
+        inputPanel.add(addButton);
+
+        // Story list display
         storyListModel = new DefaultListModel<>();
-        for (String story : storyList) {
-            storyListModel.addElement(story);
+        for (int i = 0; i < fetchedStories.length(); i++) {
+            JSONObject obj = fetchedStories.getJSONObject(i);
+            storyListModel.addElement(obj.getString("subject"));
         }
-
         storyListDisplay = new JList<>(storyListModel);
-        JScrollPane scrollPane = new JScrollPane(storyListDisplay);
+        JScrollPane listScrollPane = new JScrollPane(storyListDisplay);
 
-        JButton startVotingBtn = new JButton("Start Voting");
-        startVotingBtn.addActionListener((ActionEvent e) -> startVoting());
+        centerPanel.add(inputPanel, BorderLayout.NORTH);
+        centerPanel.add(listScrollPane, BorderLayout.CENTER);
+        add(centerPanel, BorderLayout.CENTER);
 
-        add(title, BorderLayout.NORTH);
-        add(scrollPane, BorderLayout.CENTER);
-        add(startVotingBtn, BorderLayout.SOUTH);
+        // Done button to start voting
+        JButton doneButton = new JButton("Done");
+        doneButton.addActionListener(e -> {
+            if (storyList.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please add at least one story.", "No Stories", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
+            // Launch voting phase
+            Voting voting = new Voting(storyList);
+            for (String participantId : participantNames.keySet()) {
+                voting.registerParticipant(participantId, participantNames.get(participantId));
+                voting.showVotingPopup(participantId);
+            }
+
+            // Close this window
+            dispose();
+        });
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.add(doneButton);
+        add(bottomPanel, BorderLayout.SOUTH);
+
+        // Window settings
         setSize(500, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-    private void startVoting() {
-        if (storyList == null || storyList.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please add at least one story.", "No Stories", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        Repository repo = Repository.getInstance();
-        String sessionId = repo.getSessionID();
-        repo.addParticipant(currentUserName, currentUserName); // id = name for creator
-
-        Map<String, String> allParticipants = repo.getAllParticipants();
-        if (allParticipants.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No participants joined yet.", "Waiting for Participants", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        Voting voting = new Voting(new ArrayList<>(storyList));
-        voting.setStories(storyList);
-
-        for (String participantId : allParticipants.keySet()) {
-            voting.registerParticipant(participantId, allParticipants.get(participantId));
-            voting.showVotingPopup(participantId);
-        }
-
-        dispose();
-    }
-
-
 }
